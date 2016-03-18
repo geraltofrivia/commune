@@ -220,11 +220,23 @@
             </div>            
         </div>
     
+
+        <!--Including Socket.io -->
+        <script src="/socket.io/socket.io.js"></script>
         <script>
             //For the popup on the red dot in input box
             $('#messagebox #inputdiv i').popup();
             $('#chatroom i').popup();
-        
+
+            //For socket.io
+            var socket = io();
+            
+            $('#messagebox #inputdiv input').keyup( function(e){
+                socket.emit('newmsg', e.key);
+                return false;
+//                console.log($(this).val());
+            })
+            
         </script>
         
     </body>
